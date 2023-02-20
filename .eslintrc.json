@@ -1,0 +1,62 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "extends": [
+    "next",
+    "eslint:recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": ["node_modules/", "dist/", "build/"],
+  "plugins": [
+    "react",
+    "@typescript-eslint/eslint-plugin",
+    "simple-import-sort",
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // React and other node_modules
+          ["^react", "^@?\\w"],
+          // Side effect imports.
+          ["^\\u0000"],
+          // Absolute imports
+          ["^src/"],
+          // Reltive imports
+          ["^\\."],
+          // CSS and SCSS files last (if any)
+          ["^.+\\.s?css$"]
+        ]
+      }
+    ],
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "@typescript-eslint/ban-types": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/display-name": "off",
+    "react/no-children-prop": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/prop-types": "warn",
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16"
+    }
+  },
+  "parser": "@typescript-eslint/parser"
+}
